@@ -1,0 +1,33 @@
+local BadgeService = game:GetService("BadgeService")
+local Players = game:GetService("Players")
+
+local PART = script.Parent
+local BADGE_ID = 12345678 ---BAdge Id
+
+PART.Transparency = 1
+PART.CanCollide = false
+
+local function hasBadge(player)
+    local success, hasBadge = pcall(function()
+        return BadgeService:UserHasBadgeAsync(player.UserId, BADGE_ID)
+    end)
+    return success and hasBadge
+end
+
+local function onPlayerAdded(player)
+    player.CharacterAdded:Connect(function()
+        if hasBadge(player) then
+            PART.Transparency = 0
+            PART.CanCollide = true
+        end
+    end)
+end
+
+Players.PlayerAdded:Connect(onPlayerAdded)
+
+
+---MADE BY ARI
+---MADE BY ARI
+---MADE BY ARI
+---MADE BY ARI
+---MADE BY ARI
