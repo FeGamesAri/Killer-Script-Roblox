@@ -1,0 +1,25 @@
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local equippedToolName = "YourToolNameHere" -- tool name
+
+player.CharacterAdded:Connect(function(character)
+    local humanoid = character:WaitForChild("Humanoid")
+
+    humanoid.EquipTool:Connect(function(tool)
+        if tool and tool.Name == equippedToolName then
+            camera.FieldOfView = 30 -- difrent zoom
+        else
+            camera.FieldOfView = 70 -- normal zoom
+        end
+    end)
+
+    humanoid.UnequipTools:Connect(function()
+        camera.FieldOfView = 70
+    end)
+end)
+
+
+----MADE BY ARI
+----MADE BY ARI
+----MADE BY ARI
+----MADE BY ARI
